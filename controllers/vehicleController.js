@@ -72,17 +72,4 @@ exports.updateVehicle = async (req, res) => {
   }
 };
 
-exports.deleteVehicle = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const connection = await connectDB();
-    await connection.execute("DELETE FROM Vehicles WHERE id = :id", [id]);
-    await connection.commit();
-    await connection.close();
 
-    res.status(200).json({ message: "Vehicle deleted successfully" });
-  } catch (error) {
-    console.error("❌ Error deleting vehicle:", error.message);
-    res.status(500).json({ error: "Error deleting vehicle", details: error.message });
-  }
-};
