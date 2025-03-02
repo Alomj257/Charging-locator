@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const vehicleRoutes = require("./routes/vehicleRoutes");
+const vehicleUsageRoutes = require("./routes/vehicleUsageRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/vehicle-usage", vehicleUsageRoutes);
 
 // Error Handling Middleware
 app.use(errorHandler);
